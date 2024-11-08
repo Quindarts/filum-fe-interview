@@ -2,7 +2,7 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import './index.css';
 import App from './App';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, HashRouter } from 'react-router-dom';
 import { ThemeProvider, Zoom } from '@mui/material';
 import theme from './Theme';
 import { SnackbarProvider } from 'notistack';
@@ -18,9 +18,9 @@ createRoot(document.getElementById('root')!).render(
         autoHideDuration={2000}
         anchorOrigin={{ vertical: 'top', horizontal: 'left' }}
       >
-        <BrowserRouter>
+        <HashRouter>
           <App />
-        </BrowserRouter>
+        </HashRouter>
       </SnackbarProvider>
     </ThemeProvider>
   </StrictMode>,

@@ -7,13 +7,16 @@ function useApp() {
     const questions = useAppStore((s: AppStateType) => s.questions);
     const totalScores = useAppStore((s: AppStateType) => s.totalScores);
     const rsListOptions = (newOptions: QuestionSavedStoreType) => {
-        if (!newOptions) return questions;
+        if (!newOptions || !newOptions.questionId || !newOptions.optionId) return questions;
 
-        if (questions.some((ques) => ques.questionId === newOptions.questionId && ques.optionId === newOptions.optionId)) {
-            return questions.map((ques: QuestionSavedStoreType) =>
-                ques.optionId === newOptions.optionId ? { ...ques, ...newOptions } : ques
-            )
+        const questionIndex = questions.findIndex((ques) => ques.questionId === newOptions.questionId && ques.optionId === newOptions.optionId);
+
+        if (questionIndex !== -1) {
+            return questions.map((ques, index) =>
+                index === questionIndex ? { ...ques, ...newOptions } : ques
+            );
         }
+
         return [...questions, newOptions];
     }
     const onToggleListOptions = (newOptions: QuestionSavedStoreType) => {

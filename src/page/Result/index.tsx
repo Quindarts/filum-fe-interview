@@ -29,7 +29,7 @@ function ResultPage() {
               justifyContent: 'center',
             }}
           >
-            <img width={30} height={30} src={yourLevel.icon} />
+            <img width={30} height={30} src={yourLevel?.icon} />
           </Box>
           <Box>
             <Typography
@@ -38,7 +38,7 @@ function ResultPage() {
               color='grey.400'
               textTransform={'uppercase'}
             >
-              VOICE OF THE CUSTOMER - CẤP ĐỘ {' ' + yourLevel.level}
+              VOICE OF THE CUSTOMER - CẤP ĐỘ {' ' + yourLevel?.level}
             </Typography>
             <Typography
               variant='h4'
@@ -60,7 +60,7 @@ function ResultPage() {
             lineHeight={1.7}
             color='grey.400'
           >
-            {yourLevel.description.text}
+            {yourLevel?.description?.text}
           </Typography>
           <Chart score={totalScores} />
         </Box>
