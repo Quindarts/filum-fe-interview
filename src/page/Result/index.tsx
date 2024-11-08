@@ -6,14 +6,19 @@ import { AssessmentType } from '@/types/Assessment.type';
 import { ResultType } from '@/types/Result.type';
 import Chart from './Chart';
 import { Icon } from '@iconify/react';
+import useShare from '@/hooks/useShare';
 function ResultPage() {
   const { results }: AssessmentType = dataJSON;
   const { totalScores } = useApp();
+  const { onCopyToClipBoard } = useShare();
 
   const yourLevel = results.find(
     (result: ResultType) => totalScores >= result.range[0] && totalScores <= result.range[1],
   ) as ResultType;
 
+  const handleCopyToClipBoard = async () => {
+    await onCopyToClipBoard('user', yourLevel?.level);
+  };
   return (
     <>
       <FilumCard>
@@ -108,6 +113,7 @@ function ResultPage() {
               sm: 'rotate(-90deg)',
             },
           }}
+          onClick={() => handleCopyToClipBoard()}
           variant='contained'
         >
           <Icon width={24} height={24} icon='line-md:download-outline-loop' />
