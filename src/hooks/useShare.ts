@@ -5,7 +5,6 @@ function useShare() {
     const onCopyToClipBoard = async (user: string, level: number) => {
         const link = ` https://filum-be-interview.vercel.app` + '/get-link?user=' + user + '&level=' + level;
         await navigator.clipboard.writeText(link);
-
         enqueueSnackbar("Copied to clipboard", { variant: "success" });
     }
     return {

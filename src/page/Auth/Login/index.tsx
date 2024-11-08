@@ -20,6 +20,7 @@ function LoginPage() {
     navigate(ROUTE_APP.INSTRUCTION);
     return;
   };
+
   return (
     <Box
       sx={{

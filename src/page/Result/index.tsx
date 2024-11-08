@@ -7,6 +7,7 @@ import { ResultType } from '@/types/Result.type';
 import Chart from './Chart';
 import { Icon } from '@iconify/react';
 import useShare from '@/hooks/useShare';
+import { redirect } from 'react-router-dom';
 function ResultPage() {
   const { results }: AssessmentType = dataJSON;
   const { totalScores, email } = useApp();
@@ -19,6 +20,11 @@ function ResultPage() {
   const handleCopyToClipBoard = async () => {
     await onCopyToClipBoard(`${email}`, yourLevel?.level);
   };
+
+  // /share-facebook/:email
+  const link_face =
+    ` https://filum-be-interview.vercel.app` + `/share-facebook/${email}?level=${yourLevel?.level}`;
+
   return (
     <>
       <FilumCard>
@@ -119,6 +125,7 @@ function ResultPage() {
           <Icon width={24} height={24} icon='line-md:download-outline-loop' />
         </Button>
         <Button
+          href={`https://www.facebook.com/sharer/sharer.php?u=${link_face}&src=sdkpreparse`}
           sx={{
             minWidth: 0,
             color: 'info.main',
