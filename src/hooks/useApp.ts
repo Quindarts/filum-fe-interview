@@ -4,6 +4,7 @@ import { QuestionSavedStoreType } from '@/types/Question.type';
 function useApp() {
     const setListOptions = useAppStore((s: AppActionsType) => s.setQuestions);
     const setTotalScores = useAppStore((s: AppActionsType) => s.setTotalScores);
+    const email = useAppStore((s: AppStateType) => s.email);
     const questions = useAppStore((s: AppStateType) => s.questions);
     const totalScores = useAppStore((s: AppStateType) => s.totalScores);
     const rsListOptions = (newOptions: QuestionSavedStoreType) => {
@@ -34,6 +35,7 @@ function useApp() {
         setTotalScores(totalScore);
     }
     return {
+        email,
         questions,
         totalScores,
         onToggleListOptions

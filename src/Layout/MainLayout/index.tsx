@@ -16,7 +16,21 @@ function MainLayout() {
       }}
     >
       <Header />
-      <Suspense fallback={<CircularProgress />}>
+      <Suspense
+        fallback={
+          <Box
+            position={'fixed'}
+            alignItems={'center'}
+            justifyContent={'center'}
+            display={'flex'}
+            height={'100vh'}
+            width={'100vw'}
+            bgcolor={'rgba(0,0,0,0.5)'}
+          >
+            <CircularProgress color='secondary' />
+          </Box>
+        }
+      >
         <Outlet />
       </Suspense>
     </Box>

@@ -9,7 +9,7 @@ import { Icon } from '@iconify/react';
 import useShare from '@/hooks/useShare';
 function ResultPage() {
   const { results }: AssessmentType = dataJSON;
-  const { totalScores } = useApp();
+  const { totalScores, email } = useApp();
   const { onCopyToClipBoard } = useShare();
 
   const yourLevel = results.find(
@@ -17,7 +17,7 @@ function ResultPage() {
   ) as ResultType;
 
   const handleCopyToClipBoard = async () => {
-    await onCopyToClipBoard('user', yourLevel?.level);
+    await onCopyToClipBoard(`${email}`, yourLevel?.level);
   };
   return (
     <>
