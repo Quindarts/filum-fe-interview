@@ -19,7 +19,7 @@ function useApp() {
         }
         return [...questions, newOptions];
     }
-    
+
     const onToggleListOptions = (newOptions: QuestionSavedStoreType) => {
         const initQuestions = rsListOptions(newOptions)
         let totalScore = 0;
@@ -34,11 +34,16 @@ function useApp() {
         }
         setTotalScores(totalScore);
     }
+    const onResetQuizz = () => {
+        setListOptions([]);
+        setTotalScores(0);
+    }
     return {
         email,
         questions,
         totalScores,
-        onToggleListOptions
+        onToggleListOptions,
+        onResetQuizz
     }
 }
 export default useApp
