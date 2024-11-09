@@ -1,11 +1,9 @@
 import { useSearchParams } from "react-router-dom";
-
 type QueryType = 'current-question'
-
-
 enum QueryEnum {
     CURRENT_QUESTION = 'current-question',
 }
+
 function useURL() {
     const [query, setSearch] = useSearchParams();
     const getQueryField = (type: QueryType) => {

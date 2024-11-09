@@ -9,9 +9,7 @@ function CustomVariantSnackbar(props: any) {
     <SnackbarContent role='alert' {...other}>
       <Box>
         {message}
-        <button className='cursor-pointer text-xl text-white' onClick={handleCloseSnackbar}>
-          Close
-        </button>
+        <button onClick={handleCloseSnackbar}>Close</button>
       </Box>
     </SnackbarContent>
   );

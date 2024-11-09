@@ -2,7 +2,6 @@ export interface KeyActionType {
     text: string;
     image_url: string;
 }
-
 export interface ResultType {
     level: number;
     icon: string;

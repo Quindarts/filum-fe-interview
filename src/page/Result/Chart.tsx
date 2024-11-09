@@ -1,7 +1,6 @@
 import GaugeChart from 'react-gauge-chart';
 import { Box, BoxProps } from '@mui/material';
 import theme from '@/Theme';
-
 interface ChartPropTypes extends BoxProps {
   score: number;
 }

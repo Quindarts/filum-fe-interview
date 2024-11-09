@@ -1,9 +1,7 @@
 import CustomVariantSnackbar from "@/components/Snackbar";
-
 import styled from '@emotion/styled'
 import { MaterialDesignContent } from 'notistack'
 import theme from ".";
-
 
 const StyledMaterialDesignContent = styled(MaterialDesignContent)(() => ({
     '&.notistack-MuiContent-warning': {

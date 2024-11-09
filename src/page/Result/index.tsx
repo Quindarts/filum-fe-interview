@@ -3,31 +3,31 @@ import useApp from '@/hooks/useApp';
 import { Box, Button, Typography } from '@mui/material';
 import dataJSON from '@/dummy/data';
 import { AssessmentType } from '@/types/Assessment.type';
-import { ResultType } from '@/types/Result.type';
+
 import Chart from './Chart';
 import { Icon } from '@iconify/react';
-import useShare from '@/hooks/useShare';
-import { redirect } from 'react-router-dom';
+import { useState } from 'react';
+import { ResultType } from '@/types/Result.type';
+import ModalShareLink from './Modal';
 function ResultPage() {
   const { results }: AssessmentType = dataJSON;
-  const { totalScores, email } = useApp();
-  const { onCopyToClipBoard } = useShare();
+  const { totalScores } = useApp();
+  const [openModal, setOpenModal] = useState(false);
+
+  const handleOpenModal = () => {
+    setOpenModal(true);
+  };
+  const handleCloseModal = () => {
+    setOpenModal(false);
+  };
 
   const yourLevel = results.find(
     (result: ResultType) => totalScores >= result.range[0] && totalScores <= result.range[1],
   ) as ResultType;
 
-  const handleCopyToClipBoard = async () => {
-    await onCopyToClipBoard(`${email}`, yourLevel?.level);
-  };
-
-  // /share-facebook/:email
-  const link_face =
-    ` https://filum-be-interview.vercel.app` + `/share-facebook/${email}?level=${yourLevel?.level}`;
-
   return (
     <>
-      <FilumCard>
+      <FilumCard sx={{ mt: 10 }}>
         <Box sx={{ display: 'flex', gap: 6, alignItems: 'center', justifyContent: 'center' }}>
           <Box
             sx={{
@@ -105,6 +105,7 @@ function ResultPage() {
               sm: 50,
             },
           }}
+          onClick={handleOpenModal}
           endIcon={<Icon width={20} height={20} icon='uil:share' />}
         >
           Chia sẻ{' '}
@@ -119,13 +120,11 @@ function ResultPage() {
               sm: 'rotate(-90deg)',
             },
           }}
-          onClick={() => handleCopyToClipBoard()}
           variant='contained'
         >
           <Icon width={24} height={24} icon='line-md:download-outline-loop' />
         </Button>
         <Button
-          href={`https://www.facebook.com/sharer/sharer.php?u=${link_face}&src=sdkpreparse`}
           sx={{
             minWidth: 0,
             color: 'info.main',
@@ -140,6 +139,7 @@ function ResultPage() {
           <Icon width={24} height={24} icon='fluent-color:mail-16' />
         </Button>
       </Box>
+      <ModalShareLink level={yourLevel.level} open={openModal} onClose={handleCloseModal} />
     </>
   );
 }

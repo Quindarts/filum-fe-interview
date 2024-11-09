@@ -1,6 +1,4 @@
 import { CardContent, Card, Box, CardProps } from '@mui/material';
-
-// interface CustomCardPropTypes extends CardProps {}
 function FilumCard(props: CardProps) {
   const { children, ...rest } = props;
   return (

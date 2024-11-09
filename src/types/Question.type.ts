@@ -9,7 +9,6 @@ export interface OptionType {
     text?: string;
     score: number;
 }
-
 export type QuestionSavedStoreType = {
     questionId?: number | string;
     optionId?: number | string;

@@ -1,13 +1,16 @@
 import { Box, Button, TextField, Typography } from '@mui/material';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import useAppStore, { AppActionsType } from '@/store/provider';
+import useAppStore from '@/store/provider';
 import { Icon } from '@iconify/react';
 import FilumCard from '@/components/Card';
 import { ROUTE_APP } from '@/constants/Route';
+import { AppActionsType } from '@/types/Zustand.type';
+
 function LoginPage() {
   const [email, setEmail] = useState('');
   const [errText, setErrText] = useState('');
+  
   const navigate = useNavigate();
   const setEmailStore = useAppStore((state: AppActionsType) => state.setEmail);
 

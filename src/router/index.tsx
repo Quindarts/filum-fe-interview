@@ -12,9 +12,9 @@ function Routing() {
   return (
     <Routes>
       <Route path={ROUTE_APP.INDEX} element={<PrivateRouter />}>
-        <Route index path={ROUTE_APP.INSTRUCTION} element={<InstructionPage />} />
+        <Route path={ROUTE_APP.INSTRUCTION} element={<InstructionPage />} />
         <Route path={ROUTE_APP.QUESTION} element={<QuestionPage />} />
-        <Route path={ROUTE_APP.RESULT} element={<ResultPage />} />
+        <Route index path={ROUTE_APP.RESULT} element={<ResultPage />} />
       </Route>
       <Route index path={ROUTE_APP.LOGIN} element={<LoginPage />} />
     </Routes>

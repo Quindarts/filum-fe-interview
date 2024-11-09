@@ -1,18 +1,8 @@
 import useAppStore from '@/store/provider';
-import styled from '@emotion/styled';
-import { AppBar, Box, Typography } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import { Icon } from '@iconify/react';
+import HeaderAppBar from './style';
 
-const HeaderAppBar = styled(AppBar)`
-  background-color: 'primary.main';
-  padding: 0 20px;
-  & .main__header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 80px;
-  }
-`;
 const Header = () => {
   const email = useAppStore((state) => state.email);
   return (

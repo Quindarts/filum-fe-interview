@@ -39,6 +39,7 @@ function QuestionPage() {
     setSelectOptions({});
     navigate(`${ROUTE_APP.QUESTION}?current-question=${currentQuestion - 1}`);
   };
+  
   const onChoose = ({ score, optionId, questionId }: QuestionSavedStoreType) => {
     setSelectOptions({ questionId, score, optionId });
   };
